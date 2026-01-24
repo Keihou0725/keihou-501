@@ -1,0 +1,62 @@
+INFO [2026-01-22 15:11:48] Starting analysis pipeline
+INFO [2026-01-22 15:11:48] Starting analysis pipeline
+INFO [2026-01-22 15:13:06] Loading education/income dataset from data/raw/education_income.csv
+INFO [2026-01-22 15:13:17] Rows loaded: 95
+INFO [2026-01-22 15:13:17] Columns loaded: 5
+INFO [2026-01-22 15:13:17] Saving raw data copy (unchanged)
+INFO [2026-01-22 15:13:17] Cleaning education/income data
+INFO [2026-01-22 15:13:17] Rows after cleaning: 95
+INFO [2026-01-22 15:13:17] Rows with finite log(income): 95
+INFO [2026-01-22 15:13:17] Saving processed data
+INFO [2026-01-22 15:17:53] Fitting Model 1: income ~ education
+INFO [2026-01-22 15:21:02] Starting analysis pipeline
+INFO [2026-01-22 15:21:02] Starting analysis pipeline
+INFO [2026-01-22 15:21:02] Loading education/income dataset from data/raw/education_income.csv
+INFO [2026-01-22 15:21:02] Rows loaded: 95
+INFO [2026-01-22 15:21:02] Columns loaded: 5
+INFO [2026-01-22 15:21:02] Saving raw data copy (unchanged)
+INFO [2026-01-22 15:21:02] Cleaning education/income data
+INFO [2026-01-22 15:21:02] Rows after cleaning: 95
+INFO [2026-01-22 15:21:02] Rows with finite log(income): 95
+INFO [2026-01-22 15:21:02] Saving processed data
+INFO [2026-01-22 15:21:02] Fitting Model 1: income ~ education
+INFO [2026-01-22 16:59:08] Fitting Model 1: income ~ education
+INFO [2026-01-23 10:03:48] Starting analysis pipeline
+INFO [2026-01-23 10:03:48] Starting analysis pipeline
+INFO [2026-01-23 10:03:48] Loading education/income dataset from data/raw/education_income.csv
+INFO [2026-01-23 10:03:48] Rows loaded: 95
+INFO [2026-01-23 10:03:48] Columns loaded: 5
+INFO [2026-01-23 10:03:48] Saving raw data copy (unchanged)
+INFO [2026-01-23 10:03:48] Cleaning education/income data
+INFO [2026-01-23 10:03:48] Rows after cleaning: 95
+INFO [2026-01-23 10:03:48] Rows with finite log(income): 95
+INFO [2026-01-23 10:03:48] Saving processed data
+INFO [2026-01-23 10:03:48] Fitting Model 1: income ~ education
+INFO [2026-01-23 10:03:48] Fitting Model 2: income ~ education + I(education^2)
+INFO [2026-01-23 10:03:48] Fitting Model 3: log(income) ~ education (finite log income rows only)
+INFO [2026-01-23 10:05:39] Fitting Model 3: log(income) ~ education (finite log income rows only)
+INFO [2026-01-24 17:27:46] Starting analysis pipeline
+INFO [2026-01-24 17:27:47] Loading education/income dataset from data/raw/education_income.csv
+INFO [2026-01-24 17:27:47] Rows loaded: 95
+INFO [2026-01-24 17:27:47] Columns loaded: 5
+INFO [2026-01-24 17:27:47] Saving raw data copy (unchanged)
+INFO [2026-01-24 17:27:47] Cleaning education/income data
+INFO [2026-01-24 17:27:47] Rows after cleaning: 95
+INFO [2026-01-24 17:27:47] Rows with finite log(income): 95
+INFO [2026-01-24 17:27:47] Saving processed data
+INFO [2026-01-24 17:27:47] Fitting Model 1: income ~ education
+INFO [2026-01-24 17:27:47] Wrote plot: outputs/figures/model_1_income_vs_education.png
+INFO [2026-01-24 17:27:47] Fitting Model 2: income ~ education + I(education^2)
+INFO [2026-01-24 17:27:47] Wrote plot: outputs/figures/model_2_quadratic_fit.png
+INFO [2026-01-24 17:27:47] Fitting Model 3: log(income) ~ education (finite log income rows only)
+INFO [2026-01-24 17:27:48] Wrote plot: outputs/figures/model_3_log_income_vs_education.png
+INFO [2026-01-24 17:27:48] Saving regression summaries to outputs/tables/
+INFO [2026-01-24 17:27:48] Wrote: outputs/tables/model_1_summary.txt
+INFO [2026-01-24 17:27:48] Wrote: outputs/tables/model_2_summary.txt
+INFO [2026-01-24 17:27:48] Wrote: outputs/tables/model_3_summary.txt
+INFO [2026-01-24 17:27:48] Creating regression coefficients table
+INFO [2026-01-24 17:27:48] Wrote: outputs/tables/regression_coefficients.csv
+INFO [2026-01-24 17:27:48] Saving session information
+INFO [2026-01-24 17:27:48] Wrote: outputs/session_info.txt
+INFO [2026-01-24 17:27:48] Snapshotting dependencies to renv.lock
+INFO [2026-01-24 17:27:49] Analysis pipeline completed successfully

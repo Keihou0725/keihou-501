@@ -1,0 +1,8 @@
+INFO [2026-01-22 15:02:38] Loading education/income dataset from data/raw/education_income.csv
+INFO [2026-01-22 15:02:38] Saving raw data copy (unchanged)
+INFO [2026-01-22 15:04:36] Starting analysis pipeline
+INFO [2026-01-22 15:04:36] Starting analysis pipeline
+INFO [2026-01-22 15:04:36] Loading education/income dataset from data/raw/education_income.csv
+INFO [2026-01-22 15:04:59] Starting analysis pipeline
+INFO [2026-01-22 15:04:59] Starting analysis pipeline
+INFO [2026-01-22 15:04:59] Loading education/income dataset from data/raw/education_income.csv
