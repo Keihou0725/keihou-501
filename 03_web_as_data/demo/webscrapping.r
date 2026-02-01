@@ -53,88 +53,57 @@ library(tibble)
 # - Department websites do not always have the same structure.
 # - Some pages may have "Areas of Interest" while others have "Research Interests".
 
-# -----------------------------------------------------------------------------
-# Part 1A: Wikipedia Warm-up (Scraping an Infobox Table)
-# -----------------------------------------------------------------------------
-# In Wikipedia, many biography pages include an "infobox" on the right side.
-# That infobox is typically stored as an HTML table with class "infobox".
 
-# URL of the Wikipedia page
-url <- "https://en.wikipedia.org/wiki/Thomas_Brunell"
-
-# Read the HTML content
-page <- read_html(url)
-
-# Extract the infobox table from the page
-# - html_nodes("table.infobox") finds the infobox table(s)
-# - html_table() converts the HTML table into an R table
-table <- page %>%
-  html_nodes("table.infobox") %>%
-  html_table() %>%
-  .[[1]] %>%
-  data.frame()
-
-# Give the columns simple names (X1, X2, ...) so we can clean consistently
-colnames(table) <- paste0("X", 1:ncol(table))
-
-# Clean the data:
-# - Remove rows where either column is missing
-# - Rename the first two columns to "Key" and "Value"
-cleaned_data <- table %>%
-  filter(!is.na(X1) & !is.na(X2)) %>%
-  rename(Key = X1, Value = X2)
-
-# At this point, cleaned_data is a simple Key/Value table.
-# You can inspect it in the console:
-# print(cleaned_data)
-
-# -----------------------------------------------------------------------------
 # Part 1B: Hard-code four Penn State faculty (social sciences broadly)
 # -----------------------------------------------------------------------------
 # These are the four faculty members we will use throughout the script.
 # (We will repeat the same scraping steps for each person.)
+##1
+shen_name <- "Fuyuan Shen"
+##2
+cha_name <- "Jiyoung Cha"
+cha_dept <- "Communication (Bellisario)"
+cha_url <- "https://bellisario.psu.edu/people/jiyoung-cha"
+#3
+hgz_name <- "Homero"
+##4
+heo_name <- "Yujin Heo"
+##5
+mbo_name <- "Mary Beth Oliver"
+#6
+holly_name <- "Holly Overton"
+#7
+hes_name <- "Heather Shoenbergerr"
+#8
+sss_name <- "Shyam Sundar"
+#9
+chi_name <- "Chris Skurka"
+#10
+liao_name <- "Sara Liao"
 
-matt_name <- "Matt Golder"
-matt_dept <- "Political Science (College of the Liberal Arts)"
-matt_url  <- "https://polisci.la.psu.edu/people/mrg19/"
 
-sona_name <- "Sona N. Golder"
-sona_dept <- "Political Science (College of the Liberal Arts)"
-sona_url  <- "https://polisci.la.psu.edu/people/sng11/"
 
-derek_name <- "Derek Kreager"
-derek_dept <- "Sociology & Criminology (College of the Liberal Arts)"
-derek_url  <- "https://sociology.la.psu.edu/people/derek-kreager/"
 
 # -----------------------------------------------------------------------------
-# Step 1: Scrape Matt Golder (one complete example, step-by-step)
+# Step 1: Scrape shen Golder (one complete example, step-by-step)
 # -----------------------------------------------------------------------------
 # 1) Read the PSU profile page
-matt_page <- read_html(matt_url)
+shen_page <- read_html(shen_url)
 
 # 2) Pull the full page text (useful for regex extraction)
-matt_text <- matt_page %>%
+shen_text <- shen_page %>%
   html_node("body") %>%
   html_text(trim = TRUE)
 
-# 3) Extract a job title line (regex)
-# This pattern tries to capture a chunk of text containing "Professor ...".
-matt_title <- str_extract(
-  matt_text,
-  "(Distinguished|Liberal Arts|Roy C\\.|Arnold S\\.|James P\\.)?\\s*(Associate\\s+)?Professor[^\\n\\r]{0,120}"
-)
-
-# 4) Extract a PSU email address (regex)
-matt_email <- str_extract(matt_text, "[A-Za-z0-9._%+-]+@psu\\.edu")
 
 # 5) Extract "Areas of Interest" (HTML)
-matt_areas <- matt_page %>%
+shen_areas <- shen_page %>%
   html_nodes(xpath = "//h2[normalize-space()='Areas of Interest']/following-sibling::ul[1]/li") %>%
   html_text(trim = TRUE)
 
 # 6) Extract "Research Interests" (HTML)
 # (Some sites use h2, others use h3 — we grab both without deciding which is “right”.)
-matt_research <- matt_page %>%
+shen_research <- shen_page %>%
   html_nodes(xpath = paste0(
     "//h2[normalize-space()='Research Interests']/following-sibling::*[1]",
     " | //h3[normalize-space()='Research Interests']/following-sibling::*[1]"
@@ -146,6 +115,7 @@ matt_interests <- paste(c(matt_areas, matt_research), collapse = "; ")
 
 # 8) Count how many interest items we captured
 matt_n_interest_items <- length(c(matt_areas, matt_research))
+
 
 # 9) Store results in a single row (tibble)
 matt_row <- tibble(
